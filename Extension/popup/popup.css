@@ -1,0 +1,349 @@
+/* popup.css — melodex Pro Popup Styles
+   Design: Dark glass-morphism matching Spotify's aesthetic
+   Width: 320px (Chrome extension popup standard)
+*/
+
+/* ─── Reset & Base ─────────────────────────────────────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+:root {
+  /* Colors — dark theme matching Spotify's palette */
+  --bg-base:        #121212;
+  --bg-surface:     #1e1e1e;
+  --bg-elevated:    #2a2a2a;
+  --bg-hover:       #333333;
+
+  --accent:         #1db954;   /* Spotify green */
+  --accent-hover:   #1ed760;
+  --accent-danger:  #e3373f;
+  --accent-muted:   #535353;
+
+  --text-primary:   #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted:     #6a6a6a;
+
+  --border:         rgba(255, 255, 255, 0.08);
+  --shadow:         0 8px 32px rgba(0, 0, 0, 0.6);
+
+  /* Typography */
+  --font:           'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  --font-size-sm:   11px;
+  --font-size-base: 13px;
+  --font-size-md:   15px;
+  --font-size-lg:   18px;
+
+  /* Spacing */
+  --space-xs:  4px;
+  --space-sm:  8px;
+  --space-md:  16px;
+  --space-lg:  24px;
+
+  /* Radius */
+  --radius-sm: 4px;
+  --radius-md: 8px;
+  --radius-lg: 12px;
+  --radius-xl: 20px;
+}
+
+body {
+  width: 320px;
+  min-height: 200px;
+  background: var(--bg-base);
+  color: var(--text-primary);
+  font-family: var(--font);
+  font-size: var(--font-size-base);
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+.popup-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-md);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg-surface);
+}
+
+.popup-logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.popup-logo-icon {
+  font-size: var(--font-size-lg);
+}
+
+.popup-logo-text {
+  font-size: var(--font-size-md);
+  font-weight: 700;
+  letter-spacing: -0.3px;
+  color: var(--text-primary);
+}
+
+/* ─── Toggle Switch ─────────────────────────────────────────────────────────── */
+.popup-toggle {
+  position: relative;
+  display: inline-block;
+  width: 40px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.popup-toggle input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.popup-toggle-slider {
+  position: absolute;
+  inset: 0;
+  background: var(--accent-muted);
+  border-radius: var(--radius-xl);
+  transition: background 0.2s ease;
+}
+
+.popup-toggle-slider::before {
+  content: "";
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: 3px;
+  bottom: 3px;
+  background: white;
+  border-radius: 50%;
+  transition: transform 0.2s ease;
+}
+
+.popup-toggle input:checked + .popup-toggle-slider {
+  background: var(--accent);
+}
+
+.popup-toggle input:checked + .popup-toggle-slider::before {
+  transform: translateX(18px);
+}
+
+/* ─── Sections ──────────────────────────────────────────────────────────────── */
+.popup-section {
+  padding: var(--space-md);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+/* ─── Login View ────────────────────────────────────────────────────────────── */
+.popup-login-text {
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+  text-align: center;
+  padding-top: var(--space-sm);
+}
+
+/* ─── Buttons ───────────────────────────────────────────────────────────────── */
+.popup-btn {
+  width: 100%;
+  padding: 10px var(--space-md);
+  border: none;
+  border-radius: var(--radius-xl);
+  font-family: var(--font);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease, opacity 0.15s ease;
+  letter-spacing: 0.3px;
+}
+
+.popup-btn:active {
+  transform: scale(0.98);
+}
+
+.popup-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spotify green — primary action */
+.popup-btn-spotify {
+  background: var(--accent);
+  color: #000000;
+}
+
+.popup-btn-spotify:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+/* Secondary — subtle action */
+.popup-btn-secondary {
+  background: var(--bg-elevated);
+  color: var(--text-secondary);
+  width: auto;
+  flex: 1;
+}
+
+.popup-btn-secondary:hover:not(:disabled) {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* Danger — destructive action */
+.popup-btn-danger {
+  background: transparent;
+  color: var(--accent-danger);
+  border: 1px solid var(--accent-danger);
+  width: auto;
+  flex: 1;
+}
+
+.popup-btn-danger:hover:not(:disabled) {
+  background: rgba(227, 55, 63, 0.1);
+}
+
+/* ─── Language Selector ─────────────────────────────────────────────────────── */
+.popup-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+}
+
+.popup-label {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+}
+
+.popup-select {
+  width: 100%;
+  padding: 10px var(--space-md);
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-family: var(--font);
+  font-size: var(--font-size-base);
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23b3b3b3' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  padding-right: 32px;
+  transition: border-color 0.15s ease;
+}
+
+.popup-select:hover {
+  border-color: var(--text-muted);
+}
+
+.popup-select:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+/* ─── Divider ───────────────────────────────────────────────────────────────── */
+.popup-divider {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 0;
+}
+
+/* ─── Stats Panel ───────────────────────────────────────────────────────────── */
+.popup-stats-title {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-secondary);
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin-bottom: var(--space-sm);
+}
+
+.popup-stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto auto;
+  gap: var(--space-sm);
+}
+
+.popup-stat-card {
+  background: var(--bg-elevated);
+  border-radius: var(--radius-md);
+  padding: var(--space-sm) var(--space-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+/* Cache Hit Rate card spans full width */
+.popup-stat-card-wide {
+  grid-column: 1 / -1;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.popup-stat-value {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--accent);
+  line-height: 1.2;
+}
+
+.popup-stat-label {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+}
+
+/* ─── Footer Actions ────────────────────────────────────────────────────────── */
+.popup-actions {
+  display: flex;
+  gap: var(--space-sm);
+}
+
+/* ─── Toast Notification ────────────────────────────────────────────────────── */
+.popup-toast {
+  position: sticky;
+  bottom: 0;
+  width: 100%;
+  padding: var(--space-sm) var(--space-md);
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  text-align: center;
+  border-top: 1px solid var(--border);
+  animation: toastSlideIn 0.2s ease;
+}
+
+.popup-toast-success {
+  background: rgba(29, 185, 84, 0.15);
+  color: var(--accent);
+}
+
+.popup-toast-error {
+  background: rgba(227, 55, 63, 0.15);
+  color: var(--accent-danger);
+}
+
+@keyframes toastSlideIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Accessibility ─────────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

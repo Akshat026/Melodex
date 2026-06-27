@@ -1,0 +1,8 @@
+# Backend
+backend/node_modules
+backend/.env
+backend/db/translatify.db
+
+# System
+.DS_Store
+Thumbs.db

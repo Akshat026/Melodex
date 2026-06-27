@@ -1,0 +1,248 @@
+/* lyrics.css — Injected Lyrics Panel Styles
+   These styles are injected directly into the Spotify page.
+   Prefixed with "melodex-" to avoid clashing with Spotify's own CSS.
+*/
+
+/* ─── Panel Container ───────────────────────────────────────────────────────── */
+#melodex-panel {
+  width: 100%;
+  max-height: 70vh;
+  display: flex;
+  flex-direction: column;
+  background: #121212;
+  border-radius: 12px;
+  overflow: hidden;
+  font-family: 'Circular', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #ffffff;
+  margin-top: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  animation: melodex-fadeIn 0.3s ease;
+}
+
+@keyframes melodex-fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── Header ────────────────────────────────────────────────────────────────── */
+.melodex-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  background: #1e1e1e;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+.melodex-logo {
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.2px;
+}
+
+.melodex-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Language badge */
+.melodex-language {
+  font-size: 11px;
+  font-weight: 600;
+  color: #b3b3b3;
+  background: #2a2a2a;
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* ⚡ Cached badge */
+.melodex-cache-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #1db954;
+  background: rgba(29, 185, 84, 0.12);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* ✨ Fresh translation badge */
+.melodex-fresh-badge {
+  font-size: 11px;
+  font-weight: 600;
+  color: #a78bfa;
+  background: rgba(167, 139, 250, 0.12);
+  padding: 2px 8px;
+  border-radius: 20px;
+}
+
+/* ─── Translated Title ───────────────────────────────────────────────────────── */
+.melodex-title {
+  padding: 12px 16px 0;
+  font-size: 15px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -0.3px;
+}
+
+/* ─── Lyrics Body ────────────────────────────────────────────────────────────── */
+.melodex-lyrics {
+  padding: 12px 16px;
+  overflow-y: auto;
+  flex: 1;
+  scrollbar-width: thin;
+  scrollbar-color: #333 transparent;
+}
+
+.melodex-lyrics::-webkit-scrollbar {
+  width: 4px;
+}
+
+.melodex-lyrics::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.melodex-lyrics::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+/* Individual lyric line */
+.melodex-line {
+  font-size: 14px;
+  font-weight: 500;
+  color: #b3b3b3;
+  line-height: 1.7;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+/* Active/highlighted line (used for real-time sync later) */
+.melodex-line-active {
+  color: #ffffff;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+/* Empty line = visual paragraph break */
+.melodex-break {
+  height: 12px;
+  display: block;
+}
+
+/* ─── Loading State ──────────────────────────────────────────────────────────── */
+.melodex-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 32px 16px;
+  color: #b3b3b3;
+  font-size: 13px;
+}
+
+/* Spinning circle */
+.melodex-spinner {
+  width: 24px;
+  height: 24px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #1db954;
+  border-radius: 50%;
+  animation: melodex-spin 0.8s linear infinite;
+}
+
+@keyframes melodex-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Error State ────────────────────────────────────────────────────────────── */
+.melodex-error {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding: 28px 16px;
+  text-align: center;
+}
+
+.melodex-error-icon {
+  font-size: 24px;
+}
+
+.melodex-error p {
+  color: #b3b3b3;
+  font-size: 13px;
+  max-width: 220px;
+  line-height: 1.5;
+}
+
+.melodex-retry-btn {
+  margin-top: 4px;
+  padding: 8px 20px;
+  background: #2a2a2a;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease;
+}
+
+.melodex-retry-btn:hover {
+  background: #333;
+}
+
+/* ─── Feedback Footer ────────────────────────────────────────────────────────── */
+.melodex-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: #1a1a1a;
+  flex-shrink: 0;
+}
+
+.melodex-footer span {
+  font-size: 11px;
+  color: #6a6a6a;
+}
+
+.melodex-feedback {
+  display: flex;
+  gap: 4px;
+}
+
+/* Thumbs buttons */
+.melodex-thumb {
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 4px 6px;
+  border-radius: 6px;
+  line-height: 1;
+  transition: background 0.15s ease, transform 0.1s ease;
+  opacity: 0.5;
+}
+
+.melodex-thumb:hover {
+  background: rgba(255, 255, 255, 0.08);
+  opacity: 1;
+}
+
+.melodex-thumb:active {
+  transform: scale(0.9);
+}
+
+/* Active state — after user votes */
+.melodex-thumb-active {
+  opacity: 1;
+  background: rgba(29, 185, 84, 0.15);
+}

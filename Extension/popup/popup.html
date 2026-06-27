@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title> Melodex </title>
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body>
+
+  <!-- ── Header ──────────────────────────────────────────────────── -->
+  <header class="popup-header">
+    <div class="popup-logo">
+      <span class="popup-logo-icon">🎵</span>
+      <span class="popup-logo-text">Melodex</span>
+    </div>
+    <label class="popup-toggle" title="Enable / Disable extension">
+      <input type="checkbox" id="extensionToggle" />
+      <span class="popup-toggle-slider"></span>
+    </label>
+  </header>
+
+  <!-- ── Login Section (shown when not logged in) ─────────────────── -->
+  <section class="popup-section" id="loginSection">
+    <p class="popup-login-text">Connect Spotify to get started</p>
+    <button class="popup-btn popup-btn-spotify" id="loginBtn">
+      Login with Spotify
+    </button>
+  </section>
+
+  <!-- ── Main Section (shown when logged in) ──────────────────────── -->
+  <section class="popup-section" id="mainSection" hidden>
+
+    <!-- Language Selector -->
+    <div class="popup-field">
+      <label class="popup-label" for="languageSelect">Translate to</label>
+      <select class="popup-select" id="languageSelect">
+        <option value="en">🇬🇧 English</option>
+        <option value="es">🇪🇸 Spanish</option>
+        <option value="fr">🇫🇷 French</option>
+        <option value="de">🇩🇪 German</option>
+        <option value="it">🇮🇹 Italian</option>
+        <option value="pt">🇵🇹 Portuguese</option>
+        <option value="ja">🇯🇵 Japanese</option>
+        <option value="ko">🇰🇷 Korean</option>
+        <option value="zh">🇨🇳 Chinese</option>
+        <option value="ar">🇸🇦 Arabic</option>
+        <option value="hi">🇮🇳 Hindi</option>
+        <option value="ru">🇷🇺 Russian</option>
+      </select>
+    </div>
+
+    <!-- Divider -->
+    <hr class="popup-divider" />
+
+    <!-- Stats Panel -->
+    <div class="popup-stats">
+      <h3 class="popup-stats-title">Your Stats</h3>
+      <div class="popup-stats-grid">
+
+        <div class="popup-stat-card">
+          <span class="popup-stat-value" id="statTranslations">—</span>
+          <span class="popup-stat-label">Songs Translated</span>
+        </div>
+
+        <div class="popup-stat-card">
+          <span class="popup-stat-value" id="statCacheHits">—</span>
+          <span class="popup-stat-label">From Cache</span>
+        </div>
+
+        <div class="popup-stat-card popup-stat-card-wide">
+          <span class="popup-stat-value" id="statCacheRate">—</span>
+          <span class="popup-stat-label">Cache Hit Rate</span>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="popup-divider" />
+
+    <!-- Footer Actions -->
+    <div class="popup-actions">
+      <button class="popup-btn popup-btn-secondary" id="clearCacheBtn">
+        🗑 Clear Cache
+      </button>
+      <button class="popup-btn popup-btn-danger" id="logoutBtn">
+        Logout
+      </button>
+    </div>
+
+  </section>
+
+  <!-- ── Status Toast (appears briefly for feedback) ──────────────── -->
+  <div class="popup-toast" id="toast" hidden></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

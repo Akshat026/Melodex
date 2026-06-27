@@ -1,0 +1,53 @@
+melodex-pro/
+│
+├── extension/                        # Chrome Extension
+│   ├── manifest.json                 # Extension config & permissions
+│   ├── popup/
+│   │   ├── popup.html                # Extension popup UI
+│   │   ├── popup.js                  # Popup logic (language selector, stats)
+│   │   └── popup.css                 # Popup styles
+│   │
+│   ├── scripts/
+│   │   ├── background.js             # Service worker (OAuth, API calls)
+│   │   ├── content.js                # Injected into Spotify page
+│   │   ├── detector.js               # Detects song changes (MutationObserver)
+│   │   ├── translator.js             # Handles translation requests
+│   │   └── injector.js               # Injects lyrics into Spotify DOM
+│   │
+│   ├── styles/
+│   │   └── lyrics.css                # Styles for injected lyrics overlay
+│   │
+│   └── icons/
+│       ├── icon16.png
+│       ├── icon32.png
+│       ├── icon48.png
+│       └── icon128.png
+│
+├── backend/                          # Node.js + Express Server
+│   ├── server.js                     # Entry point
+│   ├── .env                          # API keys (never commit this)
+│   ├── .env.example                  # Template for env variables
+│   │
+│   ├── routes/
+│   │   ├── translate.js              # POST /translate
+│   │   ├── cache.js                  # GET /cache/:songId
+│   │   └── analytics.js              # POST /analytics/feedback
+│   │
+│   ├── controllers/
+│   │   ├── translateController.js    # Translation logic
+│   │   ├── cacheController.js        # Cache read/write logic
+│   │   └── analyticsController.js    # Feedback & stats logic
+│   │
+│   ├── db/
+│   │   ├── database.js               # SQLite connection setup
+│   │   ├── migrations/
+│   │   │   └── init.sql              # Creates tables on first run
+│   │   └── melodex.db            # SQLite file (auto-generated, gitignore)
+│   │
+│   └── middleware/
+│       ├── rateLimit.js              # Prevents API abuse
+│       └── cors.js                   # Allows extension to call backend
+│
+├── .gitignore
+├── README.md
+└── package.json                      # Backend dependencies

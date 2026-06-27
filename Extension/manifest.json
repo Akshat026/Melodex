@@ -1,0 +1,55 @@
+{
+  "manifest_version": 3,
+  "name": "Melodex",
+  "version": "1.0.0",
+  "description": "Auto-translate lyrics and podcasts on Spotify in real-time.",
+
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "identity"
+  ],
+
+  "host_permissions": [
+  "https://open.spotify.com/*",
+  "https://api.spotify.com/*",
+  "http://localhost:3000/*"
+  ],
+
+  "background": {
+    "service_worker": "scripts/background.js",
+    "type": "module"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["https://open.spotify.com/*"],
+      "js": [
+        "scripts/detector.js",
+        "scripts/translator.js",
+        "scripts/injector.js",
+        "scripts/content.js"
+      ],
+      "css": ["styles/lyrics.css"],
+      "run_at": "document_idle"
+    }
+  ],
+
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
