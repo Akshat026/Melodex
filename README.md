@@ -23,12 +23,12 @@ Melodex is a Chrome extension that detects the currently playing song on Spotify
 
 ## Features
 
-- 🌍 **Real-time translation** — lyrics translated into 12 languages instantly
-- 🎯 **Frame-accurate sync** — 100ms render loop with LRC timestamp matching
-- ⚡ **Two-layer cache** — Chrome local storage + SQLite DB reduces API calls by up to 70%
-- 👍 **Feedback loop** — thumbs up/down per song stored for analytics
-- 🔐 **Spotify OAuth 2.0** — secure login with automatic token refresh
-- 📊 **Usage stats** — tracks translations served and cache hit rate in the popup
+-  **Real-time translation** — lyrics translated into 12 languages instantly
+-  **Frame-accurate sync** — 100ms render loop with LRC timestamp matching
+-  **Two-layer cache** — Chrome local storage + SQLite DB reduces API calls by up to 70%
+-  **Feedback loop** — thumbs up/down per song stored for analytics
+-  **Spotify OAuth 2.0** — secure login with automatic token refresh
+-  **Usage stats** — tracks translations served and cache hit rate in the popup
 
 ---
 
